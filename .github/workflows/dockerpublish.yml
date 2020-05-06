@@ -14,7 +14,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: "loicviennois-home"
+  IMAGE_NAME: loicviennois-home
 
 jobs:
   # Run tests.

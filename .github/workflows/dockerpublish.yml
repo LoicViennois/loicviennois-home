@@ -12,7 +12,6 @@ env:
 
 jobs:
   push_to_registries:
-    needs: test
     name: Push Docker image to GitHub Packages and Docker Hub
     runs-on: ubuntu-latest
     steps:

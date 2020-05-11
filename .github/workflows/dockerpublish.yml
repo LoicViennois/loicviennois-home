@@ -11,8 +11,8 @@ env:
   IMAGE_NAME: home
 
 jobs:
-  push_to_registries:
-    name: Push Docker image to GitHub Packages and Docker Hub
+  push_to_docker_hub:
+    name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -23,12 +23,4 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
-          tag_with_ref: true
-      - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: ${{ github.repository }}/${{ env.IMAGE_NAME }}
           tag_with_ref: true

@@ -1,3 +1,3 @@
-FROM nginx:1.17
+FROM nginx:stable
 
 COPY src /usr/share/nginx/html

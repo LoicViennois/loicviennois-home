@@ -11,7 +11,7 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-HEALTHCHECK --interval=1m CMD curl -f http://localhost/ || exit 1
+HEALTHCHECK CMD curl -f http://localhost/ || exit 1
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 

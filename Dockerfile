@@ -8,4 +8,12 @@ RUN apt-get update && apt-get install --no-install-recommends -y curl
 
 COPY src /usr/share/nginx/html
 
+COPY docker-entrypoint.sh /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 HEALTHCHECK CMD curl -f http://localhost/ || exit 1
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+CMD ["nginx", "-g", "daemon off;"]

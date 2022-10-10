@@ -2,7 +2,7 @@ version: '2.4'
 
 services:
   client:
-    image: loicviennois/home
+    image: ghcr.io/loicviennois/home
     build: .
     ports:
       - '8080:80'

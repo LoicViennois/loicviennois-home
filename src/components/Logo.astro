@@ -1,0 +1,37 @@
+---
+import {
+  FLYBY,
+  FLYBY_DASH,
+  FLYBY_STROKE_WIDTH,
+  PLANET,
+} from '../lib/logo-flyby';
+
+// Same mark as the favicon and touch icons (scripts/generate-icons.mjs).
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 32 32"
+  aria-hidden="true"
+  class:list={['size-8 shrink-0', className]}
+>
+  <rect width="32" height="32" rx="7" fill="#171a2b"></rect>
+  <circle cx={PLANET.cx} cy={PLANET.cy} r={PLANET.r} fill="#a3adff"></circle>
+  <g
+    fill="none"
+    stroke-width={FLYBY_STROKE_WIDTH}
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d={FLYBY.incoming} stroke="#e9ebf5"></path>
+    <path
+      d={FLYBY.outgoing}
+      stroke="#a3adff"
+      stroke-dasharray={FLYBY_DASH}
+    ></path>
+  </g>
+</svg>

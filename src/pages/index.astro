@@ -1,0 +1,132 @@
+---
+import '../styles/global.css';
+
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+
+import BuildInfo from '../components/BuildInfo.astro';
+import Flyby from '../components/Flyby.astro';
+import Header from '../components/Header.astro';
+import Icon from '../components/Icon.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { EMAIL, GITHUB_URL, REDDIT_URL } from '../lib/links';
+import { PROJECTS } from '../lib/projects';
+
+const title = 'Loïc Viennois';
+const description =
+  'Home of Loïc Viennois on the internet: puzzles, solvers and planners for the web.';
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={Astro.site} />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="/favicon.64.png" rel="icon" type="image/png" sizes="64x64" />
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
+    <meta name="theme-color" content="#10121f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.site} />
+    <meta
+      property="og:image"
+      content={new URL('/favicon.512.png', Astro.site)}
+    />
+    <script is:inline>
+      // Apply the saved theme (dark by default) before first paint (see src/lib/theme.ts).
+      (function () {
+        var theme;
+        try {
+          theme = JSON.parse(localStorage.getItem('lv_theme'));
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = 'dark';
+        }
+        document.documentElement.dataset.theme = theme;
+        if (theme === 'light') {
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute('content', '#f1f2f8');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <Header />
+    <main class="mx-auto max-w-5xl px-4 pb-20 lg:px-6">
+      <section
+        aria-labelledby="intro"
+        class="grid items-center gap-6 pt-8 pb-14 md:grid-cols-[1fr_auto] md:gap-10 md:pt-20 md:pb-20"
+      >
+        <div class="order-2 flex flex-col gap-5 md:order-1">
+          <p class="animate-rise font-mono text-sm text-orbit">hello, world</p>
+          <h1
+            id="intro"
+            class="animate-rise text-4xl leading-[1.05] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl"
+            style="animation-delay: 60ms"
+          >
+            I'm Loïc. I make small, playful things for the web.
+          </h1>
+          <p
+            class="animate-rise max-w-xl text-lg text-pretty text-ink-soft"
+            style="animation-delay: 120ms"
+          >
+            Puzzles, solvers and planners, built for fun and in the open. Pick a
+            destination below and I'll slingshot you there.
+          </p>
+          <ul
+            class="animate-rise flex flex-wrap gap-2 pt-1"
+            style="animation-delay: 180ms"
+          >
+            <li>
+              <a href={GITHUB_URL} rel="me noopener" class="btn btn-primary">
+                <Icon name="github" class="size-4" />
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href={REDDIT_URL} rel="me noopener" class="btn btn-ghost">
+                <Icon name="reddit" class="size-4" />
+                Reddit
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${EMAIL}`} class="btn btn-ghost">
+                <Icon name="mail" class="size-4" />
+                {EMAIL}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="order-1 size-36 animate-rise justify-self-start sm:size-44 md:order-2 md:size-72 md:justify-self-end">
+          <Flyby />
+        </div>
+      </section>
+
+      <section aria-labelledby="projects" class="flex flex-col gap-6">
+        <div class="flex items-center gap-4">
+          <h2
+            id="projects"
+            class="font-mono text-sm tracking-widest text-ink-soft uppercase"
+          >
+            Projects
+          </h2>
+          <span aria-hidden="true" class="h-px flex-1 bg-line"></span>
+        </div>
+        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {PROJECTS.map((project, index) => (
+            <ProjectCard project={project} index={index} />
+          ))}
+        </ul>
+      </section>
+    </main>
+    <BuildInfo />
+    <Analytics />
+    <SpeedInsights />
+  </body>
+</html>

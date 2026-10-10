@@ -1,0 +1,44 @@
+---
+import type { Project } from '../lib/projects';
+import Icon from './Icon.astro';
+
+interface Props {
+  project: Project;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const host = new URL(project.url).host;
+---
+
+<li class="animate-rise" style={`animation-delay: ${160 + index * 90}ms`}>
+  <a
+    href={project.url}
+    class="group card flex h-full flex-col gap-4 p-5"
+    style={`--accent: var(--${project.accent})`}
+  >
+    <div class="flex items-start justify-between">
+      <img
+        src={project.icon}
+        alt=""
+        width="52"
+        height="52"
+        class="size-13 rounded-[14px]"
+      />
+      <Icon
+        name="arrow-up-right"
+        class="text-ink-soft transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-(--accent)"
+      />
+    </div>
+    <div class="flex flex-1 flex-col gap-1.5">
+      <h3 class="text-xl font-bold tracking-tight">{project.name}</h3>
+      <p class="text-ink-soft">{project.description}</p>
+    </div>
+    <p class="flex items-center gap-1.5 font-mono text-xs text-ink-soft">
+      <span aria-hidden="true" class="text-(--accent)">
+        →
+      </span>
+      {host}
+    </p>
+  </a>
+</li>

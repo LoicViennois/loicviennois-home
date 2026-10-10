@@ -1,0 +1,46 @@
+{
+  "name": "loicviennois.com",
+  "author": "Loïc Viennois",
+  "description": "Home of Loïc Viennois on the internet",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@12.9.1",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.21.0",
+      "onFail": "download"
+    }
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "prettier --check .",
+    "format": "prettier --write .",
+    "typecheck": "astro check",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "icons": "node scripts/generate-icons.mjs"
+  },
+  "private": true,
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "astro": "^7.3.8",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^24.19.1",
+    "prettier": "~3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
+    "typescript": "~6.0.3"
+  }
+}

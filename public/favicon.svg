@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="112" fill="#171a2b"/>
   <g transform="translate(0 0) scale(16)">
-    <circle cx="16" cy="6.5" r="0.45" fill="#3a3f63"/><circle cx="25" cy="9" r="0.35" fill="#3a3f63"/><circle cx="20" cy="13.5" r="0.3" fill="#3a3f63"/><circle cx="10" cy="11" r="0.35" fill="#3a3f63"/>
-    <circle cx="10" cy="21.5" r="2.8" fill="#a3adff"/>
+    <circle cx="16" cy="6.5" r="0.45" fill="#3a3f63"/><circle cx="25" cy="9" r="0.35" fill="#3a3f63"/><circle cx="20" cy="13.5" r="0.3" fill="#3a3f63"/><circle cx="14.5" cy="12" r="0.35" fill="#3a3f63"/>
+    <circle cx="12.5" cy="21.5" r="2.8" fill="#a3adff"/>
     <g fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M7.45 5.5L5.06 20.72A5 5 0 0 0 6.2 24.75" stroke="#e9ebf5"/>
-      <path d="M6.2 24.75A5 5 0 0 0 10 26.5L27 26.5" stroke="#a3adff" stroke-dasharray="0.01 2.7"/>
+      <path d="M9.95 5.5L7.56 20.72A5 5 0 0 0 8.7 24.75" stroke="#e9ebf5"/>
+      <path d="M8.7 24.75A5 5 0 0 0 12.5 26.5L24.5 26.5" stroke="#a3adff" stroke-dasharray="0.01 2.7"/>
     </g>
   </g>
 </svg>

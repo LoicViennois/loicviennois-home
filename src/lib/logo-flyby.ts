@@ -5,13 +5,13 @@
 // Shared by the header logo (src/components/Logo.astro) and the favicon and
 // touch icons (scripts/generate-icons.mjs). Everything sits on a 32 unit grid.
 
-export const PLANET = { cx: 10, cy: 21.5, r: 2.8 };
+export const PLANET = { cx: 12.5, cy: 21.5, r: 2.8 };
 // The radius of the arc the trajectory follows around the planet.
 const ORBIT_RADIUS = 5;
 // Where the incoming leg starts, leaning a little to the right, and where the
 // outgoing leg ends, level with the bottom of the arc so it leaves flat.
-const START = [7.45, 5.5] as const;
-const END = [27, PLANET.cy + ORBIT_RADIUS] as const;
+const START = [9.95, 5.5] as const;
+const END = [24.5, PLANET.cy + ORBIT_RADIUS] as const;
 
 export const FLYBY_STROKE_WIDTH = 1.8;
 export const FLYBY_DASH = '0.01 2.7';

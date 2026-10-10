@@ -1,0 +1,5 @@
+allowBuilds:
+  esbuild: true
+  '@tailwindcss/oxide': true
+minimumReleaseAgeExclude:
+  - prettier@3.9.10

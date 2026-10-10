@@ -1,44 +1,50 @@
-// The logo mark: a gravity-assist flyby. A trajectory swoops down, swings
-// around a planet and heads off somewhere new, its path drawing a V. The
-// incoming leg is flown (solid), the outgoing one only planned (dotted), like
-// a manoeuvre node in KSP.
+// The logo mark: a gravity-assist flyby. A trajectory dives in, swings around
+// a planet and heads off somewhere new, its path drawing an L. The incoming
+// leg is flown (solid), the outgoing one only planned (dotted), like a
+// manoeuvre node in KSP.
 // Shared by the header logo (src/components/Logo.astro) and the favicon and
-// PWA icons (scripts/generate-icons.mjs). Everything sits on a 32 unit grid.
+// touch icons (scripts/generate-icons.mjs). Everything sits on a 32 unit grid.
 
-const CENTRE_X = 16;
-// The planet, and the radius of the arc the trajectory follows around it.
-const PLANET_Y = 19;
+export const PLANET = { cx: 11, cy: 21.5, r: 2.8 };
+// The radius of the arc the trajectory follows around the planet.
 const ORBIT_RADIUS = 5;
-export const PLANET_RADIUS = 2.8;
-// Where the incoming leg starts; the outgoing leg ends mirrored on the right.
-const START_X = 5;
-const START_Y = 5.5;
+// Where the incoming leg starts and the outgoing leg ends.
+const START = [4.5, 6] as const;
+const END = [27.5, 19.5] as const;
 
 export const FLYBY_STROKE_WIDTH = 1.8;
 export const FLYBY_DASH = '0.01 2.7';
-export const PLANET = { cx: CENTRE_X, cy: PLANET_Y, r: PLANET_RADIUS };
 
 function flybyPaths() {
-  // Each leg is the tangent from its end to the arc around the planet.
-  const dx = START_X - CENTRE_X;
-  const dy = START_Y - PLANET_Y;
-  const toStart = Math.atan2(dy, dx);
-  const tangent = toStart - Math.acos(ORBIT_RADIUS / Math.hypot(dx, dy));
-  const tx = CENTRE_X + ORBIT_RADIUS * Math.cos(tangent);
-  const ty = PLANET_Y + ORBIT_RADIUS * Math.sin(tangent);
-  const bottom = `${CENTRE_X} ${PLANET_Y + ORBIT_RADIUS}`;
-  const arc = `A${ORBIT_RADIUS} ${ORBIT_RADIUS} 0 0 0`;
-  const f = (n: number) => Number(n.toFixed(2));
+  const angleTo = ([x, y]: readonly [number, number]) =>
+    Math.atan2(y - PLANET.cy, x - PLANET.cx);
+  const spread = ([x, y]: readonly [number, number]) =>
+    Math.acos(ORBIT_RADIUS / Math.hypot(x - PLANET.cx, y - PLANET.cy));
+  const onOrbit = (angle: number) =>
+    `${f(PLANET.cx + ORBIT_RADIUS * Math.cos(angle))} ${f(PLANET.cy + ORBIT_RADIUS * Math.sin(angle))}`;
 
-  const incoming = `M${START_X} ${START_Y}L${f(tx)} ${f(ty)}${arc} ${bottom}`;
-  const outward = `${arc} ${f(2 * CENTRE_X - tx)} ${f(ty)}L${2 * CENTRE_X - START_X} ${START_Y}`;
+  // Each leg is the tangent from its end to the arc around the planet, which
+  // the trajectory follows anticlockwise on screen; the periapsis is halfway.
+  const enter = angleTo(START) - spread(START);
+  const leave = angleTo(END) + spread(END);
+  const sweep =
+    (((enter - leave) % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+  const periapsis = onOrbit(enter - sweep / 2);
+  const arc = `A${ORBIT_RADIUS} ${ORBIT_RADIUS} 0 0 0`;
+
+  const incoming = `M${START.join(' ')}L${onOrbit(enter)}${arc} ${periapsis}`;
+  const outward = `${arc} ${onOrbit(leave)}L${END.join(' ')}`;
 
   return {
     incoming,
-    outgoing: `M${bottom}${outward}`,
+    outgoing: `M${periapsis}${outward}`,
     // The whole trip, for the craft flying it on the home page.
     trip: `${incoming}${outward}`,
   };
+}
+
+function f(n: number) {
+  return Number(n.toFixed(2));
 }
 
 export const FLYBY = flybyPaths();

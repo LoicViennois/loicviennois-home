@@ -8,7 +8,7 @@ Home of Loïc Viennois on the internet, and the launch pad to his projects:
 [KSP Delta-V Planner](https://ksp.loicviennois.com).
 
 The logo is a gravity-assist flyby: a trajectory swings around a planet and heads off somewhere new,
-drawing a V on the way.
+drawing an L on the way.
 
 It is a static site built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com),
 deployed on Vercel.

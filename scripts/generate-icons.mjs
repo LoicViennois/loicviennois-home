@@ -1,5 +1,5 @@
 // Generates the favicon and touch icons from one SVG design: a gravity-assist
-// flyby around a planet, the same mark as the header logo (src/components/Logo.astro).
+// flyby around a planet drawing an L, the same mark as the header logo (src/components/Logo.astro).
 // Usage: pnpm icons
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -26,10 +26,10 @@ const ORBIT = '#a3adff';
 
 // A few faint stars, on the 32 unit logo grid, clear of the trajectory.
 const STARS = [
-  [4, 15, 0.45],
-  [9, 27.5, 0.35],
-  [24.5, 26, 0.4],
-  [28, 13, 0.3],
+  [16, 6.5, 0.45],
+  [25, 9, 0.35],
+  [20, 13.5, 0.3],
+  [10, 11, 0.35],
 ];
 
 /**

@@ -2,10 +2,10 @@
   <rect width="512" height="512" rx="112" fill="#171a2b"/>
   <g transform="translate(0 0) scale(16)">
     <circle cx="16" cy="6.5" r="0.45" fill="#3a3f63"/><circle cx="25" cy="9" r="0.35" fill="#3a3f63"/><circle cx="20" cy="13.5" r="0.3" fill="#3a3f63"/><circle cx="14.5" cy="12" r="0.35" fill="#3a3f63"/>
-    <circle cx="13.96" cy="21.98" r="4.8" fill="#a3adff"/>
+    <circle cx="14.96" cy="21" r="4.8" fill="#a3adff"/>
     <g fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M10.02 2.12L7.05 20.88A7 7 0 0 0 8.64 26.53" stroke="#e9ebf5"/>
-      <path d="M8.64 26.53A7 7 0 0 0 13.96 28.98L24.96 28.98" stroke="#a3adff" stroke-dasharray="0.01 2.7"/>
+      <path d="M9.92 2L6.95 20.77A7.2 7.2 0 0 0 8.59 26.58" stroke="#e9ebf5"/>
+      <path d="M8.59 26.58A7.2 7.2 0 0 0 14.06 29.1L25.06 29.099999999999998" stroke="#a3adff" stroke-dasharray="0.01 2.7"/>
     </g>
   </g>
 </svg>

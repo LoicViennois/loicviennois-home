@@ -5,24 +5,27 @@
 // Shared by the header logo (src/components/Logo.astro) and the favicon and
 // touch icons (scripts/generate-icons.mjs). Everything sits on a 32 unit grid.
 
-export const PLANET = { cx: 13.96, cy: 21.98, r: 4.8 };
-// The radius of the arc the trajectory follows around the planet.
-const ORBIT_RADIUS = 7;
+// The planet sits a little up and to the right of the arc's centre, which
+// keeps it clear of the path and nearer the middle of the logo.
+export const PLANET = { cx: 14.96, cy: 21, r: 4.8 };
+// The arc the trajectory follows as it swings around the planet.
+const ORBIT = { cx: 14.06, cy: 21.9 };
+const ORBIT_RADIUS = 7.2;
 // Where the incoming leg starts, leaning a little to the right, and where the
 // outgoing leg ends, level with the bottom of the arc so it leaves flat.
-const START = [10.02, 2.12] as const;
-const END = [24.96, PLANET.cy + ORBIT_RADIUS] as const;
+const START = [9.92, 2] as const;
+const END = [25.06, ORBIT.cy + ORBIT_RADIUS] as const;
 
 export const FLYBY_STROKE_WIDTH = 1.8;
 export const FLYBY_DASH = '0.01 2.7';
 
 function flybyPaths() {
   const angleTo = ([x, y]: readonly [number, number]) =>
-    Math.atan2(y - PLANET.cy, x - PLANET.cx);
+    Math.atan2(y - ORBIT.cy, x - ORBIT.cx);
   const spread = ([x, y]: readonly [number, number]) =>
-    Math.acos(ORBIT_RADIUS / Math.hypot(x - PLANET.cx, y - PLANET.cy));
+    Math.acos(ORBIT_RADIUS / Math.hypot(x - ORBIT.cx, y - ORBIT.cy));
   const onOrbit = (angle: number) =>
-    `${f(PLANET.cx + ORBIT_RADIUS * Math.cos(angle))} ${f(PLANET.cy + ORBIT_RADIUS * Math.sin(angle))}`;
+    `${f(ORBIT.cx + ORBIT_RADIUS * Math.cos(angle))} ${f(ORBIT.cy + ORBIT_RADIUS * Math.sin(angle))}`;
 
   // Each leg is the tangent from its end to the arc around the planet, which
   // the trajectory follows anticlockwise on screen; the periapsis is halfway.

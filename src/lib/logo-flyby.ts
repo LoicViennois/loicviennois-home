@@ -7,7 +7,7 @@
 
 // The planet sits a little up and to the right of the arc's centre, which
 // keeps it clear of the path and nearer the middle of the logo.
-export const PLANET = { cx: 14.96, cy: 21, r: 4.8 };
+export const PLANET = { cx: 15.66, cy: 20.3, r: 4.8 };
 // The arc the trajectory follows as it swings around the planet.
 const ORBIT = { cx: 14.06, cy: 21.9 };
 const ORBIT_RADIUS = 7.2;

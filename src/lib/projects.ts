@@ -9,6 +9,14 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    name: 'KSP Delta-V Planner',
+    description:
+      'Work out the Delta-V your rocket needs for interplanetary travel in Kerbal Space Program.',
+    url: 'https://ksp.loicviennois.com',
+    icon: '/projects/ksp.png',
+    accent: 'ksp',
+  },
+  {
     name: 'The Binary Game',
     description:
       'Play with binary numbers: flip the bits to match the target numbers, solo or with friends.',
@@ -23,13 +31,5 @@ export const PROJECTS: Project[] = [
     url: 'https://euler.loicviennois.com',
     icon: '/projects/euler.svg',
     accent: 'euler',
-  },
-  {
-    name: 'KSP Delta-V Planner',
-    description:
-      'Work out the Delta-V your rocket needs for interplanetary travel in Kerbal Space Program.',
-    url: 'https://ksp.loicviennois.com',
-    icon: '/projects/ksp.png',
-    accent: 'ksp',
   },
 ];

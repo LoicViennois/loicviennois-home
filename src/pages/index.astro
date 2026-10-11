@@ -63,15 +63,17 @@ const description =
         aria-labelledby="intro"
         class="grid items-center gap-6 pt-8 pb-14 md:grid-cols-[1fr_auto] md:gap-10 md:pt-20 md:pb-20"
       >
-        <div class="order-2 flex flex-col gap-5 md:order-1">
+        <div class="order-2 flex flex-col gap-5 @container md:order-1">
           <p class="animate-rise font-mono text-sm text-orbit">Hello, World!</p>
           <h1
             id="intro"
-            class="animate-rise text-4xl leading-[1.05] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl"
+            class="animate-rise text-[min(3.75rem,9.1cqi)] leading-[1.05] font-extrabold tracking-tight"
             style="animation-delay: 60ms"
           >
-            <span class="block">I'm Loïc, I build stuff...</span>
-            <span class="block">Check out my projects!</span>
+            <span class="block whitespace-nowrap">
+              I'm Loïc, I build stuff...
+            </span>
+            <span class="block whitespace-nowrap">Check out my projects!</span>
           </h1>
           <ul
             class="animate-rise flex flex-wrap gap-2 pt-1"

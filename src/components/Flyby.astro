@@ -35,17 +35,17 @@ const STARS = [
     r={PLANET.r}
     fill="var(--orbit)"
   ></circle>
-  <g fill="none" stroke-width="0.55" stroke-linecap="round">
+  <g fill="none" stroke-width="0.85" stroke-linecap="round">
     <path d={FLYBY.incoming} stroke="var(--ink)"></path>
     <path
       d={FLYBY.outgoing}
       stroke="var(--orbit)"
-      stroke-dasharray="0.01 1.3"
+      stroke-dasharray="0.01 1.8"
     ></path>
   </g>
   <g class="motion-reduce:hidden">
-    <circle r="0.85" fill="var(--orbit)" opacity="0.35"></circle>
-    <circle r="0.45" fill="var(--ink)"></circle>
+    <circle r="1.25" fill="var(--orbit)" opacity="0.35"></circle>
+    <circle r="0.65" fill="var(--ink)"></circle>
     <animateMotion
       dur="7s"
       repeatCount="indefinite"

@@ -51,7 +51,7 @@ test.describe('Home', () => {
 
     await page.getByRole('button', { name: 'About' }).click();
     await expect(about).toBeVisible();
-    await expect(about.getByTestId('commit-link')).toHaveText(/^\w{3,7}$/);
+    await expect(about.getByTestId('commit-sha')).toHaveText(/^\w{3,7}$/);
 
     await about.getByRole('button', { name: 'Close' }).click();
     await expect(about).toBeHidden();

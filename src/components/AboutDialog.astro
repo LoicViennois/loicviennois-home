@@ -1,12 +1,9 @@
 ---
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
-import { REPO_URL } from '../lib/links';
 
 // Vercel exposes the deployed commit at build time.
 const commitSha = process.env.VERCEL_GIT_COMMIT_SHA ?? 'dev';
-const commitUrl =
-  commitSha !== 'dev' ? `${REPO_URL}/commit/${commitSha}` : REPO_URL;
 ---
 
 <dialog
@@ -27,30 +24,18 @@ const commitUrl =
       <Icon name="x" />
     </button>
   </div>
-  <div class="space-y-4 px-6 pt-3 pb-6 text-sm leading-relaxed [&_a]:font-semibold [&_a]:whitespace-nowrap [&_a]:underline [&_a]:decoration-orbit [&_a]:decoration-2 [&_a]:underline-offset-2">
+  <div class="px-6 pt-3 pb-6 text-sm leading-relaxed">
     <div class="flex items-center gap-3">
       <Logo />
       <p>
         <span class="font-bold">loicviennois.com</span>, build{' '}
-        <a
-          href={commitUrl}
-          title={commitSha}
-          rel="noopener"
-          data-testid="commit-link"
-          class="font-mono"
-        >
+        <code title={commitSha} data-testid="commit-sha">
           {commitSha.slice(0, 7)}
-        </a>
+        </code>
         <br />
         <span class="text-ink-soft">Copyright &copy; 2026 Loïc Viennois</span>
       </p>
     </div>
-    <p class="border-t border-line pt-4 text-xs text-ink-soft">
-      This site is free software, released under the MIT License.{' '}
-      <a href={REPO_URL} rel="noopener" class="text-ink">
-        Source on GitHub
-      </a>
-    </p>
   </div>
 </dialog>
 

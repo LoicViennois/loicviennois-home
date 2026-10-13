@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="#1a1e28"/>
+  <rect x="82" y="76.53999999999999" width="156" height="156" rx="37.44" fill="#ffbf3c" filter="url(#glow)"/><rect x="82" y="87.46" width="156" height="156" rx="37.44" fill="#c98a12"/><rect x="82" y="76.53999999999999" width="156" height="156" rx="37.44" fill="#ffbf3c"/>
+  <rect x="274" y="87.46" width="156" height="156" rx="37.44" fill="#262b38"/><rect x="274" y="76.53999999999999" width="156" height="156" rx="37.44" fill="#3a4153"/>
+  <rect x="82" y="268.54" width="156" height="156" rx="37.44" fill="#ffbf3c" filter="url(#glow)"/><rect x="82" y="279.46000000000004" width="156" height="156" rx="37.44" fill="#c98a12"/><rect x="82" y="268.54" width="156" height="156" rx="37.44" fill="#ffbf3c"/>
+  <rect x="274" y="268.54" width="156" height="156" rx="37.44" fill="#ffbf3c" filter="url(#glow)"/><rect x="274" y="279.46000000000004" width="156" height="156" rx="37.44" fill="#c98a12"/><rect x="274" y="268.54" width="156" height="156" rx="37.44" fill="#ffbf3c"/>
+</svg>

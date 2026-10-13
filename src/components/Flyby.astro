@@ -1,0 +1,65 @@
+---
+import { FLYBY, PLANET } from '../lib/logo-flyby';
+
+// The logo mark drawn large, with a little craft flying the trip on a loop.
+const STARS = [
+  [15.5, 4.5, 0.2],
+  [20, 7.5, 0.16],
+  [27.5, 4, 0.14],
+  [24, 13, 0.18],
+  [16.5, 14, 0.12],
+  [29.5, 22, 0.16],
+  [21, 30.5, 0.14],
+];
+---
+
+<svg viewBox="0 0 32 32" aria-hidden="true" class="size-full overflow-visible">
+  <defs>
+    <radialGradient id="planet-glow">
+      <stop offset="0%" stop-color="var(--orbit)" stop-opacity="0.45"></stop>
+      <stop offset="100%" stop-color="var(--orbit)" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  {STARS.map(([cx, cy, r]) => (
+    <circle cx={cx} cy={cy} r={r} fill="var(--ink-soft)" />
+  ))}
+  <circle
+    cx={PLANET.cx}
+    cy={PLANET.cy}
+    r={PLANET.r * 2.4}
+    fill="url(#planet-glow)"
+  ></circle>
+  <circle
+    cx={PLANET.cx}
+    cy={PLANET.cy}
+    r={PLANET.r}
+    fill="var(--orbit)"
+  ></circle>
+  <g fill="none" stroke-width="0.85" stroke-linecap="round">
+    <path d={FLYBY.incoming} stroke="var(--ink)"></path>
+    <path
+      d={FLYBY.outgoing}
+      stroke="var(--orbit)"
+      stroke-dasharray="0.01 1.8"
+    ></path>
+  </g>
+  <g class="motion-reduce:hidden">
+    <circle r="1.25" fill="var(--orbit)" opacity="0.35"></circle>
+    <circle r="0.65" fill="var(--ink)"></circle>
+    <animateMotion
+      dur="7s"
+      repeatCount="indefinite"
+      path={FLYBY.trip}
+      calcMode="spline"
+      keyTimes="0;1"
+      keySplines="0.45 0 0.55 1"
+    ></animateMotion>
+    <animate
+      attributeName="opacity"
+      values="0;1;1;0;0"
+      keyTimes="0;0.08;0.82;0.92;1"
+      dur="7s"
+      repeatCount="indefinite"
+    ></animate>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ['master']
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v3
+        with:
+          cache: true
+
+      - name: Check formatting
+        run: pnpm run check
+
+      - name: Type-check and build
+        run: pnpm run build
+
+  test-e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v3
+        with:
+          cache: true
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps --only-shell chromium
+
+      - name: Run E2E tests
+        run: pnpm run e2e
+
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

@@ -4,3 +4,6 @@ dist
 playwright-report
 test-results
 .claude/worktrees
+.agents/skills
+.claude/skills
+skills-lock.json

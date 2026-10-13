@@ -21,7 +21,4 @@
 
 ## Design
 
-- Stay visually consistent with the sibling apps (The Binary Game, Project Euler Solver, KSP Delta-V Planner): same
-  colour token names (`--bg`, `--surface`, `--ink`, `--ink-soft`, `--line`, `--tint`), dark theme
-  by default with a toggle, sticky blurred header, pill buttons, `rise`/`pop` animations.
 - The logo geometry lives in `src/lib/logo-flyby.ts`; run `pnpm icons` after changing it.

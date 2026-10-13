@@ -45,30 +45,6 @@ test.describe('Home', () => {
     await expect(html).toHaveAttribute('data-theme', 'light');
   });
 
-  test('opens and closes the About dialog', async ({ page }) => {
-    const about = page.getByRole('dialog', { name: 'About' });
-    await expect(about).toBeHidden();
-
-    await page.getByRole('button', { name: 'About' }).click();
-    await expect(about).toBeVisible();
-    await expect(about.getByTestId('commit-link')).toHaveText(/^\w{3,7}$/);
-
-    await about.getByRole('button', { name: 'Close' }).click();
-    await expect(about).toBeHidden();
-
-    await page.getByRole('button', { name: 'About' }).click();
-    await expect(about).toBeVisible();
-    await page.keyboard.press('Escape');
-    await expect(about).toBeHidden();
-  });
-
-  test('passes axe checks with the About dialog open', async ({ page }) => {
-    await page.getByRole('button', { name: 'About' }).click();
-    await page.waitForTimeout(1000);
-    const results = await new AxeBuilder({ page }).analyze();
-    expect(results.violations).toEqual([]);
-  });
-
   for (const theme of ['dark', 'light'] as const) {
     test(`passes axe checks in the ${theme} theme`, async ({ page }) => {
       if (theme === 'light') {

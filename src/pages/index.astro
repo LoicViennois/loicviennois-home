@@ -64,13 +64,16 @@ const description =
     <main class="mx-auto max-w-5xl px-4 pb-20 lg:px-6">
       <section
         aria-labelledby="intro"
-        class="grid items-center gap-6 pt-8 pb-14 md:grid-cols-[1fr_auto] md:gap-10 md:pt-20 md:pb-20"
+        class="grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-5 pt-14 pb-14 max-md:@container md:gap-10 md:pt-20 md:pb-20"
       >
-        <div class="order-2 flex flex-col gap-5 @container md:order-1">
-          <p class="animate-rise font-mono text-sm text-orbit">Hello, World!</p>
+        {/* Below md the column dissolves into the grid, so the greeting shares a row with the logo. */}
+        <div class="contents md:flex md:flex-col md:gap-5 md:@container">
+          <p class="animate-rise self-end font-mono text-sm text-orbit max-md:col-start-1 max-md:row-start-1 md:self-auto">
+            Hello, World!
+          </p>
           <h1
             id="intro"
-            class="animate-rise text-[min(3.75rem,9.1cqi)] leading-[1.05] font-extrabold tracking-tight"
+            class="animate-rise text-[min(3.75rem,9.1cqi)] max-md:col-span-2 leading-[1.05] font-extrabold tracking-tight"
             style="animation-delay: 60ms"
           >
             <span class="block whitespace-nowrap">
@@ -79,7 +82,7 @@ const description =
             <span class="block whitespace-nowrap">Check out my projects!</span>
           </h1>
           <ul
-            class="animate-rise flex flex-wrap gap-2 pt-1"
+            class="animate-rise flex flex-wrap gap-2 pt-1 max-md:col-span-2"
             style="animation-delay: 180ms"
           >
             <li>
@@ -102,7 +105,7 @@ const description =
             </li>
           </ul>
         </div>
-        <div class="order-1 size-36 animate-rise justify-self-start sm:size-44 md:order-2 md:size-72 md:justify-self-end">
+        <div class="col-start-2 row-start-1 size-36 animate-rise justify-self-end sm:size-44 md:size-72">
           <Flyby />
         </div>
       </section>

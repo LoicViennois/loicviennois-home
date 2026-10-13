@@ -5,9 +5,9 @@ import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 
 import Flyby from '../components/Flyby.astro';
-import Header from '../components/Header.astro';
 import Icon from '../components/Icon.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 import { EMAIL, GITHUB_URL, REDDIT_URL } from '../lib/links';
 import { PROJECTS } from '../lib/projects';
 
@@ -56,7 +56,11 @@ const description =
     </script>
   </head>
   <body>
-    <Header />
+    <div class="relative mx-auto max-w-5xl">
+      <div class="absolute top-3 right-4 z-10 lg:top-4 lg:right-6">
+        <ThemeToggle />
+      </div>
+    </div>
     <main class="mx-auto max-w-5xl px-4 pb-20 lg:px-6">
       <section
         aria-labelledby="intro"

@@ -2,7 +2,7 @@
 
 <a href="https://loicviennois.com/" target="_blank"><img src="public/favicon.512.png" width="192" alt="logo" /></a>
 
-Home of Loïc Viennois on the internet, and the launch pad to his projects:
+Home of Loïc Viennois on the internet, and the launch pad to my projects:
 [The Binary Game](https://binary.loicviennois.com),
 [Project Euler Solver](https://euler.loicviennois.com) and
 [KSP Delta-V Planner](https://ksp.loicviennois.com).

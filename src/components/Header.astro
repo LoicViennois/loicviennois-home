@@ -1,4 +1,5 @@
 ---
+import AboutDialog from './AboutDialog.astro';
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
@@ -29,7 +30,17 @@ const iconButton =
       >
         <Icon name="github" />
       </a>
+      <button
+        type="button"
+        data-about-open
+        aria-label="About"
+        aria-haspopup="dialog"
+        class={iconButton}
+      >
+        <Icon name="info" />
+      </button>
       <ThemeToggle />
     </nav>
   </div>
 </header>
+<AboutDialog />

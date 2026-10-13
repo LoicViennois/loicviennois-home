@@ -1,0 +1,72 @@
+---
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+import { REPO_URL } from '../lib/links';
+
+// Vercel exposes the deployed commit at build time.
+const commitSha = process.env.VERCEL_GIT_COMMIT_SHA ?? 'dev';
+const commitUrl =
+  commitSha !== 'dev' ? `${REPO_URL}/commit/${commitSha}` : REPO_URL;
+---
+
+<dialog
+  data-about
+  aria-labelledby="about-title"
+  class="m-auto w-[min(28rem,calc(100%-2rem))] rounded-3xl bg-surface p-0 text-left text-ink shadow-2xl backdrop:bg-black/40 backdrop:backdrop-blur-sm open:animate-rise"
+>
+  <div class="flex items-center justify-between gap-4 px-6 pt-5">
+    <h2 id="about-title" class="text-xl font-bold">
+      About
+    </h2>
+    <button
+      type="button"
+      data-about-close
+      aria-label="Close"
+      class="grid size-9 cursor-pointer place-items-center rounded-full text-ink-soft transition hover:bg-tint hover:text-ink"
+    >
+      <Icon name="x" />
+    </button>
+  </div>
+  <div class="space-y-4 px-6 pt-3 pb-6 text-sm leading-relaxed [&_a]:font-semibold [&_a]:whitespace-nowrap [&_a]:underline [&_a]:decoration-orbit [&_a]:decoration-2 [&_a]:underline-offset-2">
+    <div class="flex items-center gap-3">
+      <Logo />
+      <p>
+        <span class="font-bold">loicviennois.com</span>, build{' '}
+        <a
+          href={commitUrl}
+          title={commitSha}
+          rel="noopener"
+          data-testid="commit-link"
+          class="font-mono"
+        >
+          {commitSha.slice(0, 7)}
+        </a>
+        <br />
+        <span class="text-ink-soft">Copyright &copy; 2026 Loïc Viennois</span>
+      </p>
+    </div>
+    <p class="border-t border-line pt-4 text-xs text-ink-soft">
+      This site is free software, released under the MIT License.{' '}
+      <a href={REPO_URL} rel="noopener" class="text-ink">
+        Source on GitHub
+      </a>
+    </p>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-about]')!;
+
+  document
+    .querySelector('[data-about-open]')
+    ?.addEventListener('click', () => dialog.showModal());
+  dialog
+    .querySelector('[data-about-close]')!
+    .addEventListener('click', () => dialog.close());
+  // A click on the backdrop lands on the dialog element itself.
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
+</script>

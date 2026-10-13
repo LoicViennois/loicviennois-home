@@ -2,7 +2,6 @@
   "name": "loicviennois.com",
   "author": "Loïc Viennois",
   "description": "Home of Loïc Viennois on the internet",
-  "license": "MIT",
   "type": "module",
   "packageManager": "pnpm@12.11.2",
   "devEngines": {

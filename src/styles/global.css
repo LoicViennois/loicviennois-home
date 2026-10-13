@@ -1,0 +1,187 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/jetbrains-mono';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ---------- Colour tokens: night sky by default, daylight on toggle ---------- */
+
+:root {
+  --bg: #f1f2f8;
+  --surface: #ffffff;
+  --ink: #161a2e;
+  --ink-soft: #535a76;
+  --line: #d6d9e8;
+  --stars: rgb(22 26 46 / 0.13);
+  --orbit: #4b55d1;
+  --orbit-ink: #ffffff;
+  --orbit-glow: rgb(75 85 209 / 0.3);
+  --tint: rgb(22 26 46 / 0.05);
+
+  /* Each project keeps the accent of its own app, dark enough for text. */
+  --binary: #9a6200;
+  --euler: #9a5119;
+  --ksp: #0b6d8a;
+}
+
+:root[data-theme='dark'] {
+  --bg: #10121f;
+  --surface: #171a2b;
+  --ink: #e9ebf5;
+  --ink-soft: #9ca2bf;
+  --line: #272b44;
+  --stars: rgb(200 205 235 / 0.16);
+  --orbit: #a3adff;
+  --orbit-ink: #10121f;
+  --orbit-glow: rgb(163 173 255 / 0.35);
+  --tint: rgb(233 235 245 / 0.05);
+
+  --binary: #ffbf3c;
+  --euler: #d9995a;
+  --ksp: #5cc8e8;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-orbit: var(--orbit);
+  --color-orbit-ink: var(--orbit-ink);
+  --color-tint: var(--tint);
+}
+
+@theme {
+  --font-sans:
+    'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+  --animate-pop: pop 380ms cubic-bezier(0.3, 1.6, 0.5, 1);
+  --animate-rise: rise 520ms cubic-bezier(0.2, 0.9, 0.3, 1.15) both;
+
+  @keyframes pop {
+    40% {
+      transform: scale(1.18);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(0.97);
+    }
+  }
+}
+
+/* ---------- Base ---------- */
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  html[data-theme='dark'] {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    min-height: 100%;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    transition:
+      background-color 250ms,
+      color 250ms;
+  }
+
+  /* A faint field of stars: two offset dot grids, so it never looks ruled. */
+  body {
+    background-image:
+      radial-gradient(circle, var(--stars) 1px, transparent 1.5px),
+      radial-gradient(circle, var(--stars) 0.75px, transparent 1.25px);
+    background-size:
+      56px 56px,
+      34px 34px;
+    background-position:
+      0 0,
+      17px 23px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--orbit);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 120ms,
+    background-color 150ms,
+    color 150ms,
+    box-shadow 150ms;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+@utility btn-primary {
+  background-color: var(--orbit);
+  color: var(--orbit-ink);
+
+  &:hover {
+    box-shadow: 0 6px 20px -4px var(--orbit-glow);
+  }
+}
+
+@utility btn-ghost {
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--line);
+
+  &:hover {
+    background-color: var(--tint);
+  }
+}
+
+/*
+ * A project card, lit in its app's own accent on hover: --accent is set per
+ * card (see src/components/ProjectCard.astro).
+ */
+@utility card {
+  border-radius: 1.25rem;
+  background-color: var(--surface);
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 1px 2px rgb(0 0 0 / 0.04);
+  transition:
+    transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1.2),
+    box-shadow 200ms;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 0 0 1.5px var(--accent),
+      0 14px 34px -14px color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}

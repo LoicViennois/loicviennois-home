@@ -64,11 +64,11 @@ const description =
     <main class="mx-auto max-w-5xl px-4 pb-20 lg:px-6">
       <section
         aria-labelledby="intro"
-        class="grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-5 pt-14 pb-14 max-md:@container md:gap-10 md:pt-20 md:pb-20"
+        class="grid grid-cols-[auto_1fr] items-center md:grid-cols-[1fr_auto] gap-x-4 gap-y-5 pt-14 pb-14 max-md:@container md:gap-10 md:pt-20 md:pb-20"
       >
-        {/* Below md the column dissolves into the grid, so the greeting shares a row with the logo. */}
+        {/* Below md the column dissolves into the grid, so the greeting shares a row with the logo, mirrored to its right. */}
         <div class="contents md:flex md:flex-col md:gap-5 md:@container">
-          <p class="animate-rise self-end font-mono text-sm text-orbit max-md:col-start-1 max-md:row-start-1 md:self-auto">
+          <p class="animate-rise self-end font-mono text-sm text-orbit max-md:col-start-2 max-md:row-start-1 max-md:justify-self-end md:self-auto">
             Hello, World!
           </p>
           <h1
@@ -105,7 +105,7 @@ const description =
             </li>
           </ul>
         </div>
-        <div class="col-start-2 row-start-1 size-36 animate-rise justify-self-end max-md:-translate-x-4 sm:size-44 md:size-72">
+        <div class="row-start-1 size-36 animate-rise max-md:col-start-1 max-md:justify-self-start md:col-start-2 md:justify-self-end sm:size-44 md:size-72">
           <Flyby />
         </div>
       </section>

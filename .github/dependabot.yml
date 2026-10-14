@@ -6,6 +6,10 @@ updates:
       interval: 'weekly'
     commit-message:
       prefix: '⬆️'
+    ignore:
+      # Stay on the Node LTS line pinned in package.json devEngines
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
     groups:
       dev-dependencies:
         dependency-type: 'development'

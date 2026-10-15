@@ -58,4 +58,16 @@ test.describe('Home', () => {
       expect(results.violations).toEqual([]);
     });
   }
+
+  test('adds a star where the background is clicked', async ({ page }) => {
+    const added = page.locator('[data-added-stars] circle');
+
+    await page.mouse.click(40, 600);
+    await expect(added).toHaveCount(1);
+    await expect(added).toHaveAttribute('cx', '40');
+    await expect(added).toHaveAttribute('cy', '600');
+
+    await page.getByRole('button', { name: 'Switch to light theme' }).click();
+    await expect(added).toHaveCount(1);
+  });
 });

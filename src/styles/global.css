@@ -12,7 +12,10 @@
   --ink: #161a2e;
   --ink-soft: #535a76;
   --line: #d6d9e8;
-  --stars: rgb(22 26 46 / 0.13);
+  --star-white: #161a2e;
+  --star-cool: #3a44c0;
+  --star-warm: #9a5119;
+  --stars-opacity: 0.3;
   --orbit: #4b55d1;
   --orbit-ink: #ffffff;
   --orbit-glow: rgb(75 85 209 / 0.3);
@@ -30,7 +33,10 @@
   --ink: #e9ebf5;
   --ink-soft: #9ca2bf;
   --line: #272b44;
-  --stars: rgb(200 205 235 / 0.16);
+  --star-white: #e3e6f7;
+  --star-cool: #a8bcff;
+  --star-warm: #ffd3a1;
+  --stars-opacity: 0.45;
   --orbit: #a3adff;
   --orbit-ink: #10121f;
   --orbit-glow: rgb(163 173 255 / 0.35);
@@ -77,8 +83,10 @@
 /* ---------- Base ---------- */
 
 @layer base {
+  /* Only the root is painted, so the starfield (src/components/Starfield.astro) shows through the body. */
   html {
     color-scheme: light;
+    background-color: var(--bg);
   }
 
   html[data-theme='dark'] {
@@ -88,25 +96,11 @@
   html,
   body {
     min-height: 100%;
-    background-color: var(--bg);
     color: var(--ink);
     font-family: var(--font-sans);
     transition:
       background-color 250ms,
       color 250ms;
-  }
-
-  /* A faint field of stars: two offset dot grids, so it never looks ruled. */
-  body {
-    background-image:
-      radial-gradient(circle, var(--stars) 1px, transparent 1.5px),
-      radial-gradient(circle, var(--stars) 0.75px, transparent 1.25px);
-    background-size:
-      56px 56px,
-      34px 34px;
-    background-position:
-      0 0,
-      17px 23px;
   }
 
   :focus-visible {

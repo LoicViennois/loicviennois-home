@@ -24,7 +24,7 @@
   /* Each project keeps the accent of its own app, dark enough for text. */
   --binary: #9a6200;
   --euler: #9a5119;
-  --ksp: #0b6d8a;
+  --ksp: #376f13;
 }
 
 :root[data-theme='dark'] {
@@ -44,7 +44,7 @@
 
   --binary: #ffbf3c;
   --euler: #d9995a;
-  --ksp: #5cc8e8;
+  --ksp: #8fd14f;
 }
 
 @theme inline {

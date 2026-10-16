@@ -13,7 +13,7 @@ export const PROJECTS: Project[] = [
     description:
       'Work out the Delta-V your rocket needs for interplanetary travel in Kerbal Space Program.',
     url: 'https://ksp.loicviennois.com',
-    icon: '/projects/ksp.png',
+    icon: '/projects/ksp.svg',
     accent: 'ksp',
   },
   {

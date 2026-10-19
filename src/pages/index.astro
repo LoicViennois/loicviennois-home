@@ -9,7 +9,7 @@ import Icon from '../components/Icon.astro';
 import Starfield from '../components/Starfield.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
-import { EMAIL, GITHUB_URL, REDDIT_URL } from '../lib/links';
+import { EMAIL, GITHUB_URL, REDDIT_URL, REPO_URL } from '../lib/links';
 import { PROJECTS } from '../lib/projects';
 
 const title = 'Loïc Viennois';
@@ -58,11 +58,20 @@ const description =
   </head>
   <body>
     <Starfield />
-    <div class="relative mx-auto max-w-5xl">
-      <div class="absolute top-3 right-4 z-10 lg:top-4 lg:right-6">
+    <header class="relative mx-auto max-w-5xl">
+      <div class="absolute top-3 right-4 z-10 flex items-center gap-1 lg:top-4 lg:right-6">
+        <a
+          href={REPO_URL}
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub repository"
+          class="grid size-9 place-items-center rounded-full text-ink-soft transition hover:bg-tint hover:text-ink active:scale-90"
+        >
+          <Icon name="github" />
+        </a>
         <ThemeToggle />
       </div>
-    </div>
+    </header>
     <main class="mx-auto max-w-5xl px-4 pb-20 lg:px-6">
       <section
         aria-labelledby="intro"

@@ -29,6 +29,15 @@ test.describe('Home', () => {
     ).toHaveAttribute('href', 'mailto:contact@loicviennois.com');
   });
 
+  test('links to its GitHub repository', async ({ page }) => {
+    await expect(
+      page.getByRole('link', { name: 'GitHub repository' }),
+    ).toHaveAttribute(
+      'href',
+      'https://github.com/LoicViennois/loicviennois-home',
+    );
+  });
+
   test('is dark by default and remembers the chosen theme', async ({
     page,
   }) => {

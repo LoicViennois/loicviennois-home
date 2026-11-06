@@ -61,6 +61,11 @@ const outputs = [
   { file: 'favicon.svg', svg: iconSvg() },
   { file: 'favicon.64.png', svg: iconSvg(), size: 64 },
   { file: 'favicon.512.png', svg: iconSvg(), size: 512 },
+  {
+    file: 'maskable-512x512.png',
+    svg: iconSvg({ maskable: true }),
+    size: 512,
+  },
   { file: 'apple-touch-icon.png', svg: iconSvg({ maskable: true }), size: 180 },
 ];
 

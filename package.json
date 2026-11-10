@@ -3,11 +3,11 @@
   "author": "Loïc Viennois",
   "description": "Home of Loïc Viennois on the internet",
   "type": "module",
-  "packageManager": "pnpm@12.11.2",
+  "packageManager": "pnpm@12.18.0",
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "24.21.0",
+      "version": "^26.13.0",
       "onFail": "download"
     }
   },
@@ -37,7 +37,7 @@
     "@astrojs/check": "^0.9.12",
     "@axe-core/playwright": "^4.14.0",
     "@playwright/test": "^1.65.0",
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.6.6",
     "prettier": "~3.9.10",
     "prettier-plugin-astro": "^1.1.2",
     "typescript": "~6.0.3"

@@ -9,7 +9,13 @@ import Icon from '../components/Icon.astro';
 import Starfield from '../components/Starfield.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
-import { EMAIL, GITHUB_URL, REDDIT_URL, REPO_URL } from '../lib/links';
+import {
+  EMAIL,
+  EMAIL_URL,
+  GITHUB_URL,
+  REDDIT_URL,
+  REPO_URL,
+} from '../lib/links';
 import { PROJECTS } from '../lib/projects';
 
 const title = 'Loïc Viennois';
@@ -111,7 +117,7 @@ const description =
               </a>
             </li>
             <li>
-              <a href={`mailto:${EMAIL}`} class="btn btn-ghost">
+              <a href={EMAIL_URL} class="btn btn-ghost">
                 <Icon name="mail" class="size-4" />
                 {EMAIL}
               </a>

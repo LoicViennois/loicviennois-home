@@ -26,7 +26,10 @@ test.describe('Home', () => {
     await expect(intro.getByRole('link', { name: 'Reddit' })).toBeVisible();
     await expect(
       intro.getByRole('link', { name: 'contact@loicviennois.com' }),
-    ).toHaveAttribute('href', 'mailto:contact@loicviennois.com');
+    ).toHaveAttribute(
+      'href',
+      'mailto:contact@loicviennois.com?subject=%5Bloicviennois.com%5D%20Hello',
+    );
   });
 
   test('links to its GitHub repository', async ({ page }) => {

@@ -3,9 +3,3 @@ allowBuilds:
   '@tailwindcss/oxide': true
 minimumReleaseAgeExclude:
   - prettier@3.9.10
-packageExtensions:
-  # astro2tsx bundles @emnapi/core@1 but leaves @emnapi/runtime to peer resolution,
-  # which can pick rolldown's 2.0 beta and crash `astro check`. Keep them in sync.
-  '@astrojs/astro2tsx':
-    dependencies:
-      '@emnapi/runtime': 1.11.3
